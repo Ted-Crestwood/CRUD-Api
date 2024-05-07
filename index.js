@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const productRoute = require('./routes/product.route');
+// const productRoute = require('./routes/product.route');
+const applicationRoute = require('./routes/application.route');
+const userRoute = require('./routes/user.route')
 const app = express();
 
 //middleware
@@ -8,8 +10,13 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 //routes
-app.use("/api/products", productRoute);
-
+// app.use("/api/products", productRoute);
+app.use('/apply', applicationRoute )
+app.use('/applications', applicationRoute)
+app.use('/signup', userRoute)
+app.use('/signin', userRoute)
+app.use('/users', userRoute)
+app.use('/users/:id', userRoute)
 mongoose.connect("mongodb+srv://new:7668Tamera@auth.ugyg3xh.mongodb.net/?retryWrites=true&w=majority&appName=auth")
     .then(() => {
         console.log("Connected to database")
