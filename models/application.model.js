@@ -41,7 +41,7 @@ const ApplicationSchema = mongoose.Schema({
         }
     }],
     contact: [{
-        email: {
+        contactemail: {
             type: String,
             lowercase: true,
             unique: true,
@@ -90,7 +90,7 @@ const ApplicationSchema = mongoose.Schema({
         name: String,
         destination: { type: String },
         employer: { type: String },
-        email: { type: String },
+        refereesemail: { type: String },
         mobile: { type: Number },
     }],
     coverletter: [{
