@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ApplicationSchema = mongoose.Schema({
-    person: {
+    person: [{
         firstname: {
             type: String,
             required: true,
@@ -39,11 +39,12 @@ const ApplicationSchema = mongoose.Schema({
             type: Boolean,
             required: true,
         }
-    },
-    contact: {
+    }],
+    contact: [{
         email: {
             type: String,
             lowercase: true,
+            unique: true,
         },
         mobile: {
             type: Number,
@@ -51,50 +52,50 @@ const ApplicationSchema = mongoose.Schema({
         address: {
             type: String
         }
-    },
-    academic: {
+    }],
+    academic: [{
         level: { type: String, required: true },
         course: { type: String, required: true },
         institution: { type: String, required: true },
         graduation: { type: Date },
         pdf: { type: String, title: String },
-    },
-    employment: {
+    }],
+    employment: [{
         organisation: { type: String, required: true },
         destination: { type: String, required: true },
         startdate: { type: Date },
         working: { type: Boolean },
         enddate: { type: Date },
         description: { type: String },
-    },
-    professional: {
+    }],
+    professional: [{
         name: { type: String },
         institution: { type: String },
         year: { type: Number },
         pdf: { type: String, title: String },
-    },
-    shortcources: {
+    }],
+    shortcources: [{
         course: { type: String },
         institution: { type: String },
         year: { type: Number },
         pdf: { type: String, title: String },
-    },
-    membership: {
+    }],
+    membership: [{
         institution: { type: String },
         membership: { type: String },
         birthdate: { type: Date },
         pdf: { type: String, title: String },
-    },
-    referees: {
+    }],
+    referees: [{
         name: String,
         destination: { type: String },
         employer: { type: String },
         email: { type: String },
         mobile: { type: Number },
-    },
-    coverletter: {
+    }],
+    coverletter: [{
         pdf: { type: String, title: String },
-    }
+    }]
 }, {
     timestamps: true,
 });
