@@ -44,7 +44,6 @@ const ApplicationSchema = mongoose.Schema({
         email: {
             type: String,
             lowercase: true,
-            unique: true,
         },
         mobile: {
             type: Number,
