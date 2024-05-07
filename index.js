@@ -11,7 +11,9 @@ app.use(express.urlencoded({extended:false}));
 
 //routes
 // app.use("/api/products", productRoute);
-app.use('/users', userRoute)
+app.use('/', userRoute);
+app.use('/signin', userRoute);
+app.use('/signup', userRoute)
 app.use('/apply', applicationRoute )
 app.use('/applications', applicationRoute)
 mongoose.connect("mongodb+srv://new:7668Tamera@auth.ugyg3xh.mongodb.net/?retryWrites=true&w=majority&appName=auth")
