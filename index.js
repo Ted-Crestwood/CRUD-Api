@@ -1,24 +1,38 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const productRoute = require('./routes/product.route');
+const cors = require('cors')
 const applicationRoute = require('./routes/application.route');
 const userRoute = require('./routes/user.route')
+const uploadCoverLetter = require('./routes/upload.route')
+const dotenv = require('dotenv');
+const { main } = require('./uploads/main');
+dotenv.config();
+
 const app = express();
 
 //middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
+
 //routes
-// app.use("/api/products", productRoute);
 app.use('/', userRoute);
 app.use('/signin', userRoute);
 app.use('/signup', userRoute)
 app.use('/apply', applicationRoute )
 app.use('/applications', applicationRoute)
+app.use('/upload/letter', uploadCoverLetter)
+
+
+
+  
+
+
 mongoose.connect("mongodb+srv://new:7668Tamera@auth.ugyg3xh.mongodb.net/?retryWrites=true&w=majority&appName=auth")
     .then(() => {
         console.log("Connected to database")
+        main()
         app.listen(4000, () => {
             console.log("Server listening on port 4000")
         });
